@@ -1,0 +1,307 @@
+CREATE TABLE public.армия (
+	"номер_армии" serial NOT NULL,
+	"название_армии" TEXT NOT NULL,
+	CONSTRAINT "армия_pk" PRIMARY KEY ("номер_армии")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.воинская_часть (
+	"номер_воинской_части" serial NOT NULL,
+	"номер_бригады" integer,
+	"номер_дивизии" integer,
+	"номер_корпуса" integer,
+	"название_воинской_части" TEXT NOT NULL,
+	"дислокация" TEXT NOT NULL,
+	CONSTRAINT "воинская_часть_pk" PRIMARY KEY ("номер_воинской_части")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.рота (
+	"номер_роты" serial NOT NULL,
+	"номер_воинской_части" integer NOT NULL,
+	"название_роты" TEXT NOT NULL,
+	CONSTRAINT "рота_pk" PRIMARY KEY ("номер_роты")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.состав (
+	"номер_состава" serial NOT NULL,
+	"номер_воинской_части" integer NOT NULL,
+	"название_состава" TEXT NOT NULL,
+	"классификация_состава" TEXT NOT NULL,
+	CONSTRAINT "состав_pk" PRIMARY KEY ("номер_состава")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.звание (
+	"номер_звания" serial NOT NULL,
+	"название_звания" TEXT,
+	CONSTRAINT "звание_pk" PRIMARY KEY ("номер_звания")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.взвод (
+	"номер_взвода" serial NOT NULL,
+	"номер_роты" integer NOT NULL,
+	"название_взвода" TEXT NOT NULL,
+	CONSTRAINT "взвод_pk" PRIMARY KEY ("номер_взвода")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.отделение (
+	"номер_отделения" serial NOT NULL,
+	"номер_взвода" integer NOT NULL,
+	"название_отделения" TEXT NOT NULL,
+	CONSTRAINT "отделение_pk" PRIMARY KEY ("номер_отделения")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.бригада (
+	"номер_бригады" serial NOT NULL,
+	"номер_армии" integer NOT NULL,
+	"название_бригады" TEXT NOT NULL,
+	CONSTRAINT "бригада_pk" PRIMARY KEY ("номер_бригады")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.служащий (
+	"номер_служащего" serial NOT NULL,
+	"номер_состава" integer NOT NULL,
+	"имя" TEXT NOT NULL,
+	"фамилия" TEXT NOT NULL,
+	"отчество" TEXT NOT NULL,
+	"номер_звания" integer NOT NULL,
+	CONSTRAINT "служащий_pk" PRIMARY KEY ("номер_служащего")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.характеристика (
+	"номер_характеристики" serial NOT NULL,
+	"название_характеристики" TEXT NOT NULL,
+	CONSTRAINT "характеристика_pk" PRIMARY KEY ("номер_характеристики")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.характеристика_служащего (
+	"номер_характеристики" integer NOT NULL,
+	"номер_служащего" integer NOT NULL,
+	"описание" TEXT NOT NULL,
+	CONSTRAINT "характеристика_служащего_pk" PRIMARY KEY ("номер_характеристики","номер_служащего")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.специальность (
+	"название_специальности" TEXT NOT NULL,
+	"номер_служащего" integer NOT NULL,
+	CONSTRAINT "специальность_pk" PRIMARY KEY ("название_специальности","номер_служащего")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.техника (
+	"номер_техники" serial NOT NULL,
+	"название_техники" TEXT NOT NULL,
+	"номер_воинской_части" integer NOT NULL,
+	"классификация_техники" TEXT NOT NULL,
+	CONSTRAINT "техника_pk" PRIMARY KEY ("номер_техники")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.вооружение (
+	"номер_вооружения" serial NOT NULL,
+	"название_вооружения" TEXT NOT NULL,
+	"номер_воинской_части" integer NOT NULL,
+	CONSTRAINT "вооружение_pk" PRIMARY KEY ("номер_вооружения")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.характеристика_техники (
+	"номер_характеристики_техники" serial NOT NULL,
+	"номер_техники" integer NOT NULL,
+	"описание_техники" TEXT NOT NULL,
+	CONSTRAINT "характеристика_техники_pk" PRIMARY KEY ("номер_характеристики_техники","номер_техники")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.характеристика_вооружения (
+	"номер_характеристики_вооружения" serial NOT NULL,
+	"номер_вооружения" integer NOT NULL,
+	"описание_вооружения" TEXT NOT NULL,
+	CONSTRAINT "характеристика_вооружения_pk" PRIMARY KEY ("номер_характеристики_вооружения","номер_вооружения")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.базовая_техники (
+	"номер_характеристики_техники" serial NOT NULL,
+	"название_характеристики_техники" TEXT NOT NULL,
+	CONSTRAINT "базовая_техники_pk" PRIMARY KEY ("номер_характеристики_техники")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.базовая_вооружения (
+	"номер_характеристики_вооружения" serial NOT NULL,
+	"название_характеристики_вооружения" TEXT NOT NULL,
+	CONSTRAINT "базовая_вооружения_pk" PRIMARY KEY ("номер_характеристики_вооружения")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.набор_сооружений (
+	"номер_набора_сооружений" serial NOT NULL,
+	"название_набора_сооружений" TEXT NOT NULL,
+	"номер_воинской_части" integer NOT NULL,
+	CONSTRAINT "набор_сооружений_pk" PRIMARY KEY ("номер_набора_сооружений")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.сооружение (
+	"номер_сооружения" serial NOT NULL,
+	"название_сооружения" TEXT NOT NULL,
+	"номер_набора_сооружений" integer NOT NULL,
+	CONSTRAINT "сооружение_pk" PRIMARY KEY ("номер_сооружения")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.дивизия (
+	"номер_дивизии" serial NOT NULL,
+	"номер_армии" integer NOT NULL,
+	"название_дивизии" TEXT NOT NULL,
+	CONSTRAINT "дивизия_pk" PRIMARY KEY ("номер_дивизии")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.корпус (
+	"номер_корпуса" serial NOT NULL,
+	"номер_армии" integer NOT NULL,
+	"название_корпуса" TEXT NOT NULL,
+	CONSTRAINT "корпус_pk" PRIMARY KEY ("номер_корпуса")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+
+ALTER TABLE "воинская_часть" ADD CONSTRAINT "воинская_часть_fk0" FOREIGN KEY ("номер_бригады") REFERENCES "бригада"("номер_бригады");
+ALTER TABLE "воинская_часть" ADD CONSTRAINT "воинская_часть_fk1" FOREIGN KEY ("номер_дивизии") REFERENCES "дивизия"("номер_дивизии");
+ALTER TABLE "воинская_часть" ADD CONSTRAINT "воинская_часть_fk2" FOREIGN KEY ("номер_корпуса") REFERENCES "корпус"("номер_корпуса");
+
+ALTER TABLE "рота" ADD CONSTRAINT "рота_fk0" FOREIGN KEY ("номер_воинской_части") REFERENCES "воинская_часть"("номер_воинской_части");
+
+ALTER TABLE "состав" ADD CONSTRAINT "состав_fk0" FOREIGN KEY ("номер_воинской_части") REFERENCES "воинская_часть"("номер_воинской_части");
+
+ALTER TABLE "взвод" ADD CONSTRAINT "взвод_fk0" FOREIGN KEY ("номер_роты") REFERENCES "рота"("номер_роты");
+
+ALTER TABLE "отделение" ADD CONSTRAINT "отделение_fk0" FOREIGN KEY ("номер_взвода") REFERENCES "взвод"("номер_взвода");
+
+ALTER TABLE "бригада" ADD CONSTRAINT "бригада_fk0" FOREIGN KEY ("номер_армии") REFERENCES "армия"("номер_армии");
+
+ALTER TABLE "служащий" ADD CONSTRAINT "служащий_fk0" FOREIGN KEY ("номер_состава") REFERENCES "состав"("номер_состава");
+ALTER TABLE "служащий" ADD CONSTRAINT "служащий_fk1" FOREIGN KEY ("номер_звания") REFERENCES "звание"("номер_звания");
+
+ALTER TABLE "характеристика_служащего" ADD CONSTRAINT "характеристика_служащего_fk0" FOREIGN KEY ("номер_характеристики") REFERENCES "характеристика"("номер_характеристики");
+ALTER TABLE "характеристика_служащего" ADD CONSTRAINT "характеристика_служащего_fk1" FOREIGN KEY ("номер_служащего") REFERENCES "служащий"("номер_служащего");
+
+ALTER TABLE "специальность" ADD CONSTRAINT "специальность_fk0" FOREIGN KEY ("номер_служащего") REFERENCES "служащий"("номер_служащего");
+
+ALTER TABLE "техника" ADD CONSTRAINT "техника_fk0" FOREIGN KEY ("номер_воинской_части") REFERENCES "воинская_часть"("номер_воинской_части");
+
+ALTER TABLE "вооружение" ADD CONSTRAINT "вооружение_fk0" FOREIGN KEY ("номер_воинской_части") REFERENCES "воинская_часть"("номер_воинской_части");
+
+ALTER TABLE "характеристика_техники" ADD CONSTRAINT "характеристика_техники_fk0" FOREIGN KEY ("номер_характеристики_техники") REFERENCES "базовая_техники"("номер_характеристики_техники");
+ALTER TABLE "характеристика_техники" ADD CONSTRAINT "характеристика_техники_fk1" FOREIGN KEY ("номер_техники") REFERENCES "техника"("номер_техники");
+
+ALTER TABLE "характеристика_вооружения" ADD CONSTRAINT "характеристика_вооружения_fk0" FOREIGN KEY ("номер_характеристики_вооружения") REFERENCES "базовая_вооружения"("номер_характеристики_вооружения");
+ALTER TABLE "характеристика_вооружения" ADD CONSTRAINT "характеристика_вооружения_fk1" FOREIGN KEY ("номер_вооружения") REFERENCES "вооружение"("номер_вооружения");
+
+
+
+ALTER TABLE "набор_сооружений" ADD CONSTRAINT "набор_сооружений_fk0" FOREIGN KEY ("номер_воинской_части") REFERENCES "воинская_часть"("номер_воинской_части");
+
+ALTER TABLE "сооружение" ADD CONSTRAINT "сооружение_fk0" FOREIGN KEY ("номер_набора_сооружений") REFERENCES "набор_сооружений"("номер_набора_сооружений");
+
+ALTER TABLE "дивизия" ADD CONSTRAINT "дивизия_fk0" FOREIGN KEY ("номер_армии") REFERENCES "армия"("номер_армии");
+
+ALTER TABLE "корпус" ADD CONSTRAINT "корпус_fk0" FOREIGN KEY ("номер_армии") REFERENCES "армия"("номер_армии");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
