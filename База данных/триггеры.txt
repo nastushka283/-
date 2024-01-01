@@ -1,0 +1,79 @@
+--Аудит изменений в таблице вооружения
+
+--Таблица аудита—
+create table "audit_of_changes"
+(
+	"audit_id" serial NOT NULL,
+	"user" text NOT NULL,
+	"type_of_change" text NOT NULL,
+	"date" timestamp NOT NULL
+);
+
+
+--Тригерная функция, на заполнение таблицы
+
+CREATE OR REPLACE FUNCTION audit_of_changes_in_test()
+RETURNS trigger AS
+$$
+BEGIN
+	INSERT INTO audit_of_changes("user", "type_of_change", date)
+	VALUES (current_user, TG_OP, current_timestamp);
+	RETURN NEW;
+end;
+$$
+language plpgsql;
+
+--Триггер
+
+CREATE OR REPLACE TRIGGER insert_in_audit_of_weapons
+AFTER INSERT OR DELETE OR UPDATE ON вооружение
+FOR EACH ROW
+EXECUTE FUNCTION audit_of_changes_in_test();
+
+
+-- При добавлении нового служащего, присваивает ему звание "Рядовой"
+
+--Тригерная функция, на заполнение таблицы
+
+CREATE OR REPLACE FUNCTION new_staff()
+RETURNS trigger AS
+$$
+BEGIN
+	UPDATE служащий
+	SET номер_звания = 16
+	WHERE (номер_служащего = new.номер_служащего) and (new.номер_звания = 0);
+	RETURN NEW;
+end;
+$$
+language plpgsql;
+
+--Триггер
+
+CREATE OR REPLACE TRIGGER new_staff_ridovoi
+AFTER INSERT ON служащий
+FOR EACH ROW
+EXECUTE FUNCTION new_staff ();
+
+
+-- Если при добавлении вооружения, название вооружения пустое, то присваивание названия "Автомат АК-47"
+
+--Тригерная функция, на заполнение таблицы
+
+CREATE OR REPLACE FUNCTION new_weapon(name_weapon in text)
+RETURNS trigger AS
+$$
+BEGIN
+	UPDATE вооружение
+	SET название_вооружения = 'Автомат АК-47'	
+	WHERE (номер_вооружения = new.номер_вооружения) and (new.название_вооружения = '');
+	RETURN NEW;
+end;
+$$
+language plpgsql;
+
+--Триггер
+
+CREATE OR REPLACE TRIGGER new_weapon_AK47
+AFTER INSERT ON вооружение
+FOR EACH ROW
+EXECUTE FUNCTION new_weapon ();
