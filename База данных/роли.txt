@@ -1,0 +1,24 @@
+create role admin superuser login;
+
+create role general login;
+grant usage on schema public to general;
+
+grant select, insert, delete, update on рота to general;
+grant select, insert, delete, update on техника to general;
+grant select, insert, delete, update on вооружение to general;
+grant select, insert, delete, update on набор_сооружений to general;
+grant select, insert, delete, update on состав to general;
+grant select, insert, delete, update on воинская_часть to general;
+grant select on взвод to general;
+grant select on характеристика_техники to general;
+grant select on характеристика_служащего to general;
+grant select on характеристика to general;
+grant select on характеристика_вооружения to general;
+grant select on сооружение to general;
+grant select on служащий to general;
+
+create role solder login;
+grant usage on schema public to solder;
+
+grant select on служащий to solder;
+grant select on звание to solder;
