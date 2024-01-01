@@ -1,0 +1,55 @@
+-- Вывод списка всех служащих
+CREATE OR REPLACE VIEW information_soldier as
+select фамилия, имя, отчество, название_звания from служащий as sl
+inner join звание as zv on zv.номер_звания = sl.номер_звания;
+
+
+-- Вывод списка офицерских составов
+CREATE OR REPLACE VIEW  name_sostava_oficerov as
+select название_состава, классификация_состава from состав
+where (классификация_состава = 'Офицерский состав');
+
+
+-- Вывод списка всех обладателей золотого значка ГТО
+CREATE OR REPLACE VIEW golden_znak_gto as
+select фамилия, имя, отчество, описание from служащий as sl
+inner join характеристика_служащего as hs on hs.номер_служащего = sl.номер_служащего
+inner join характеристика as hr on hr.номер_характеристики = hs.номер_характеристики
+where (hr.название_характеристики = 'Значёк ГТО') and (hs.описание = 'Золотой');
+
+
+-- Вывод колличества вооружения в определённой части через функцию
+CREATE OR REPLACE FUNCTION kolicestvo_voorujenie (nomer_voinsk_ch int) RETURNS int
+as 
+$$
+declare 
+	kol int;
+begin
+	kol = (select count(номер_вооружения) from вооружение as vor
+		inner join воинская_часть as vc on vor.номер_воинской_части = vc.номер_воинской_части
+		where (vc.номер_воинской_части = nomer_voinsk_ch)
+		);
+	return kol;
+end;
+$$
+language plpgsql;
+
+
+-- Вывод колличества определённой должности в определённой воинской части через функцию
+CREATE OR REPLACE FUNCTION nazvanie_chasti (nv text, rt int) RETURNS int
+as 
+$$
+declare
+	koll int;
+begin
+	koll = (select count(название_звания) from звание as nz
+			inner join служащий as sl on nz.номер_звания = sl.номер_звания
+			inner join состав as so on sl.номер_состава = so.номер_состава
+			inner join воинская_часть as vc on so.номер_воинской_части = vc.номер_воинской_части
+			where (nz.название_звания = nv) and (vc.номер_воинской_части = rt)
+		 );
+	return koll;
+end;
+$$
+language plpgsql;
+

@@ -1,0 +1,71 @@
+-- Колличество активных или неактивных воинских частей, исходя из колличества рот в них
+CREATE OR REPLACE PROCEDURE work_or_no_vc (work out int, not_work out int)
+AS
+$$
+declare
+	quantity int;
+begin
+	work = (select count(номер_воинской_части)
+	from (
+		select distinct (vc.номер_воинской_части) from воинская_часть as vc
+		inner join рота as rot on rot.номер_воинской_части = vc.номер_воинской_части
+		where (rot.номер_роты is not null)) as qwerty);
+	quantity = (select count(номер_воинской_части) from воинская_часть);
+	not_work = quantity - work;
+end;
+$$
+LANGUAGE plpgsql;
+
+
+-- Добавление вооружения в определённую воинскую васть
+CREATE OR REPLACE PROCEDURE add_weapons (name_weap in text, number_vc in int)
+AS
+$$
+begin
+	insert into вооружение (название_вооружения, номер_воинской_части)
+	values (name_weap, number_vc);
+end;
+$$
+LANGUAGE plpgsql;
+
+
+-- Обновление званий у служащих
+CREATE OR REPLACE PROCEDURE new_zvanie (number_zvanie in int, number_sluj in int)
+AS
+$$
+begin
+	update служащий
+	set номер_звания = number_zvanie
+	where номер_служащего = number_sluj;
+end;
+$$
+LANGUAGE plpgsql;
+
+
+-- Список офицерских составов, которые входят в бригаду
+CREATE OR REPLACE PROCEDURE spisok_sostavov (number_brig in int, class_sostava in text)
+AS
+$$
+begin
+	drop table if exists ans;
+	create table ans (название_состава text);
+	insert into ans
+	select название_состава from состав as sos
+	inner join воинская_часть as vc on vc.номер_воинской_части = sos.номер_воинской_части
+	inner join бригада as br on br.номер_бригады = vc.номер_воинской_части
+	where (br.номер_бригады = number_brig) and (sos.классификация_состава = class_sostava);
+end;
+$$
+LANGUAGE plpgsql;
+
+
+-- Добавление нового служащего
+CREATE OR REPLACE PROCEDURE add_staff (number_sost in int, name in text, surname in text, patronymic in text)
+AS
+$$
+begin
+	insert into служащий (номер_состава, имя, фамилия, отчество)
+	values (number_sost, name, surname, patronymic);
+end;
+$$
+LANGUAGE plpgsql;
