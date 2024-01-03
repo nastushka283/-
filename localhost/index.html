@@ -1,6 +1,8 @@
 <head>
 <title> База данных </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="libraries/js/jquery.min.js"></script>
+<script type="text/javascript" src="libraries/js/scripts.js"></script>
 <link href="/css/main.css" rel="stylesheet" type="text/css"></link>
 </head> 	
 
@@ -13,16 +15,16 @@
 				<tr><td colspan="3" height="10"></td></tr>
 				<tr>
 					<td width="110" class="login">Имя:</td>
-					<td width="160"><input class="login" type="text" style="width:135px;"></td>
+					<td width="160"><input id='LoginId' name="name" class="login" type="text" style="width:135px;"></td>
 					<td width="10"></td>
 				</tr>
 				<tr>
 					<td align="left" class="login">Пароль:</td>
-					<td><input class="login" type="password"  style="width:135px;"></td>
+					<td><input id='PasswordId' name="pass" class="login" type="password"  style="width:135px;"></td>
 				</tr>
 				<tr><td colspan="3" height="15"></td></tr>
 				<tr><td colspan="3" align="left">
-					<input name="ok" value="Далее" class="but_log">
+					<input name="ok" onClick="ChangeUser();" type="submit" value="Далее" class="but_log">
 					<input name="cancel" type="reset" value="Отменить" class="but_log">
 				</td></tr>
 			</table>
