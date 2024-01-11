@@ -9,10 +9,12 @@
 	$hostName		= 'pg-jail';	//Имя хоста
     $Port			= '5432';		//Порт
 	$DatBaseName	= 'test';		//Имя базы данных
-	$UserName		= 'test';		//Имя пользовател
-	$Password		= 'js7gdGrnLhrvR6gkFjgD';
+	//$UserName		= 'test';		//Имя пользовател
+	//$Password		= 'js7gdGrnLhrvR6gkFjgD';
+	$UserName		= '';		//Имя пользовател
+	$Password		= '';
 
-	ini_set('display_errors', '0');
+	ini_set('display_errors', '1');
 
 	session_start();
 
