@@ -1,11 +1,8 @@
 <?php
-	$NewUsr	= $_GET['NewUser'];
-	$NewPass= $_GET['NewPassword'];
-
 	//Сохранение в глобальных переменных
 	session_start();
-	$_SESSION['Login'] = $NewUsr;
-	$_SESSION['Password'] = $NewPass;
+	$_SESSION['Login'] = $_GET['NewUser'];
+	$_SESSION['Password'] = $_GET['NewPassword'];
 
 	require ('config.php');	//Чтение файла настроек
 
@@ -13,6 +10,6 @@
 	$dbconn = pg_connect("host=" . $hostName . " port=" . $Port . " dbname=" . $DatBaseName . " user=" . $UserName . " password=" . $Password);
 	CheckBDResult($dbconn);
 	
-	require ('mainform.php');	//Отрисовка меню
+	require ('mainform.php');	//Отрисовка главного меню
 
 ?>
