@@ -49,3 +49,23 @@ function showFormWithParam(url, someID) {
 	}
 };
 
+// Отрисовка дополнительной формы на новой форме с дополнительными двумя параметрами
+function showFormWith2Param(url, someID1, someID2) {
+	var resultID1 = document.getElementById(someID1);
+	if ( resultID1 != null ) {
+		var resultID2 = document.getElementById(someID2);
+		if ( resultID2 != null ) {
+			url = url + "?nv=" + resultID1.value + "&rt=" + resultID2.value;
+			$.get(url, function(data, status) {
+				var result = document.getElementById('FormIdNew');
+				if ( result != null ) {
+					if ( status == "success" ) {
+						result.innerHTML = data;
+					} else {
+						result.innerHTML = "ошибка выполнения запроса";
+					}
+				}
+			}, "html");
+		}
+	}
+};
