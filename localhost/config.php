@@ -1,29 +1,24 @@
 <?php
 	// Объявление констант
-	// $hostName		= 'localhost';	//Имя хоста
-	// $Port           = '5432';		//Порт
-	// $DatBaseName	= 'test';		//Имя базы данных
-	// $UserName		= 'postgres';	//Имя пользовател
-	// $Password		= '';
-
 	$hostName		= 'pg-jail';	//Имя хоста
     $Port			= '5432';		//Порт
 	$DatBaseName	= 'test';		//Имя базы данных
-	//$UserName		= 'test';		//Имя пользовател
-	//$Password		= 'js7gdGrnLhrvR6gkFjgD';
-	$UserName		= '';		//Имя пользовател
+	$UserName		= '';			//Имя пользовател
 	$Password		= '';
 
-	ini_set('display_errors', '1');
+	ini_set('display_errors', '0');
 
+	//Включение работы с глобальными переменными типа $_SESSION['xxx']
 	session_start();
 
+	//Чтение глобальной переменной Логин
 	if ( !isset($_SESSION['Login'] ) )
 	{
 		$_SESSION['Login'] = 'admin';
 	}
 	$UserName = $_SESSION['Login'];
 
+	//Чтение глобальной переменной Пароль
 	if ( !isset($_SESSION['Password'] ) )
 	{
 		$_SESSION['Password'] = 'js7gdGrnLhrvR6gkFjgD';
@@ -35,8 +30,8 @@
 	{
 		if ( $dbconn == false )
 		{
-			echo 'Ошибка: ' . pg_last_error();
-			die;
+			echo 'Ошибка: ' . pg_last_error();	//Распечатка ошибки
+			die;								//Завершение и выход
 		}
 	}
 ?>
