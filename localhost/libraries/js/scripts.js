@@ -29,3 +29,23 @@ function showForm(url) {
     }
   }, "html");
 };
+
+
+// Отрисовка дополнительной формы на новой форме с дополнительным параметром
+function showFormWithParam(url, someID) {
+	var resultID = document.getElementById(someID);
+	if ( resultID != null ) {
+		url = url + resultID.value;
+		$.get(url, function(data, status) {
+			var result = document.getElementById('FormIdNew');
+			if ( result != null ) {
+				if ( status == "success" ) {
+					result.innerHTML = data;
+				} else {
+					result.innerHTML = "ошибка выполнения запроса";
+				}
+			}
+		}, "html");
+	}
+};
+
