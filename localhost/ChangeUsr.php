@@ -9,8 +9,10 @@
 
 	require ('config.php');	//Чтение файла настроек
 
-	echo "<h4>ChangeUsr!/h4>";
 	//Подключение к БД
-	CheckBDResult();
-	echo "<h4>ChangeUsr!!!!!/h4>";
+	$dbconn = pg_connect("host=" . $hostName . " port=" . $Port . " dbname=" . $DatBaseName . " user=" . $UserName . " password=" . $Password);
+	CheckBDResult($dbconn);
+	
+	require ('mainform.php');	//Отрисовка меню
+
 ?>

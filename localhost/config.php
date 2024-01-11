@@ -29,16 +29,14 @@
 	$Password = $_SESSION['Password'];
 
 	// Подключение к базе данных
-	function CheckBDResult()
+	function CheckBDResult($dbconn)
 	{
-		$dbconn = pg_connect("host=" . $hostName . " port=" . $Port . " dbname=" . $DatBaseName . " user=" . $UserName . " password=" . $Password);
 		if ( $dbconn == false )
 		{
 			echo 'Ошибка: ' . pg_last_error();
 			die;
 		}
 	}
-echo "<h4>Yep!/h4>";
 ?>
 
 
