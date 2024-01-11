@@ -30,10 +30,6 @@
 
 	
 	// Формирование SQL запроса с рассчётом количества вооружений в выбранной воинской части
-	// $query = "select count(номер_вооружения) from вооружение as vor
-				// inner join воинская_часть as vc on vor.номер_воинской_части = vc.номер_воинской_части
-				// where (vc.номер_воинской_части = " . $Num_voinsk_ch .")";
-
 	$query = "select kolicestvo_voorujenie (" . $Num_voinsk_ch . ")";
 
 	$result = pg_query($query);
