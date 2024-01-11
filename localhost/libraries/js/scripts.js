@@ -137,4 +137,65 @@ function DeleteWarior(WariorNumber)
 };
 
 
+// Добавление оружия
+function WriteWeapon()
+{
+	var WeaponName = document.getElementById('WeaponNameId');
+	var VoinChast = document.getElementById('VoinChastId');
+	var urlWriter = "form71.php?WeapNam=" + WeaponName.value + "&VCh=" + VoinChast.value;
+	$.get(urlWriter, function(data, status) 
+	{
+		var result = document.getElementById('FormIdNew');
+		if ( result != null ) 
+		{
+			if ( status == "success" ) 
+			{
+				$.get("form7.php", function(data, status) 
+				{
+					if ( status == "success" ) 
+					{
+						result.innerHTML = data;
+					} else
+					{
+						result.innerHTML = "ошибка выполнения запроса";
+					}
+				}, "html");
+			} else 
+			{
+				result.innerHTML = "ошибка запроса для записи в БД";
+			}
+		}
+	}, "html");
+
+};
+
+// Удаление Оружия
+function DeleteWeapon(WeaponNumber)
+{
+	var urlDeleter = "form72.php?WeaponNum=" + WeaponNumber;
+	$.get(urlDeleter, function(data, status) 
+	{
+		var result = document.getElementById('FormIdNew');
+		if ( result != null ) 
+		{
+			if ( status == "success" ) 
+			{
+				$.get("form7.php", function(data, status) 
+				{
+					if ( status == "success" ) 
+					{
+						result.innerHTML = data;
+					} else
+					{
+						result.innerHTML = "ошибка выполнения запроса";
+					}
+				}, "html");
+			} else 
+			{
+				result.innerHTML = "ошибка запроса для записи в БД";
+			}
+		}
+	}, "html");
+
+};
 
