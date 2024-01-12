@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" modified="2024-01-11T15:29:13.440Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="4A26maERSpX9JkzPITZG" version="22.1.18" type="device">
+  <diagram name="Страница — 1" id="o80sxBfek96y8GO1gwlj">
+    <mxGraphModel dx="1050" dy="1734" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-1" value="Авторизация" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="210" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-2" value="Логин пользователя" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.002;entryY=0.336;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="20" y="180" as="sourcePoint" />
+            <mxPoint x="170" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-3" value="Пароль пользователя" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=-0.008;entryY=0.832;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="20" y="210" as="sourcePoint" />
+            <mxPoint x="100" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-4" value="Просмотр или изменение данных о служащих и вооружении&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-6" value="Вход в главное меню" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.007;entryY=0.342;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-4" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="330" y="180" as="sourcePoint" />
+            <mxPoint x="420" y="180" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="180" />
+              <mxPoint x="370" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-7" value="Пользователь" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.417;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-1" edge="1">
+          <mxGeometry x="-0.4286" width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="500" as="sourcePoint" />
+            <mxPoint x="230" y="300" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-8" value="Безопасность информационной системы" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.421;entryY=-0.064;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="50" as="sourcePoint" />
+            <mxPoint x="340" y="50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-11" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.413;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="420" as="sourcePoint" />
+            <mxPoint x="450" y="370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="500" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-12" value="Распределения ролей в информационной системе" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.582;entryY=-0.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zjwVnOlgVaFy1nNe57yS-4" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="520" y="70" as="sourcePoint" />
+            <mxPoint x="520" y="235" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-13" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;1&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="320" y="200" width="10" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-14" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 11px; background-color: initial;&quot;&gt;2&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="560" y="280" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-15" value="Получение нужных данных" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="570" y="260" as="sourcePoint" />
+            <mxPoint x="750" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zjwVnOlgVaFy1nNe57yS-16" value="Изменение данных" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="570" y="289.41" as="sourcePoint" />
+            <mxPoint x="750" y="289.41" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TRX2xiGsrpaqED48f1St-1" value="&lt;h1&gt;Функциональная диаграмма (нотация IDEF0)&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry y="-40" width="340" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
